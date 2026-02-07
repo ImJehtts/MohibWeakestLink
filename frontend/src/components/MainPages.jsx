@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import GameSetup from './GameSetup';
 import GamePlay from './GamePlay';
 import MidRound from './MidRound';
+import WinnerScreen from './WinnerScreen';
 
 
 function MainPages() {
@@ -21,8 +22,13 @@ function MainPages() {
   };
 
    const handleSetPlayersLeft = () => {
-    setPlayers(prev => prev - 1);
-    setRound(2);
+      if (players > 2) {
+        setPlayers(prev => prev - 1);
+        setRound(2);
+    }
+    else{
+      setRound(3);
+    }
   }
 
   const handleVotingDone = () => {
@@ -38,6 +44,7 @@ function MainPages() {
         case 0: return <GameSetup setPlayers={handleSetPlayers}/>;
         case 1: return <GamePlay players={players} addtoBank={addtoBank} handleSetPlayersLeft={handleSetPlayersLeft}/>;
         case 2: return <MidRound players={players} bank={bank} handleVotingDone={handleVotingDone}/>;
+        case 3: return <WinnerScreen bank={bank}/>;
         default: return null;
     }
   }

@@ -34,6 +34,7 @@ export const GameSetup = ({ setPlayers }) => {
                 <button type="submit">Submit</button>
             </form>
             <h2>*Please Number Your Players Accordingly*</h2>
+            <h2 style={{ fontSize: '1.25rem', marginTop: '-1rem' }}>*Please Use PC/Laptop in Full Screen! Mobile Not Supported*</h2>
         </div>
     </div>
 );

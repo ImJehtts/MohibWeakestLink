@@ -26,7 +26,7 @@ export const MidRound = ({players, bank, handleVotingDone}) => {
         <div className='VotingRound'>
             <h1>Please Vote A Player to Remove</h1>
             <h2>Players Left: {players}</h2>
-            <h2>Value in bank: {bank}</h2>
+            <h2>Total value in bank: {bank}</h2>
             <button 
             onClick={handleVotingDone}
             disabled={timer > 0 && !isVotingOver}

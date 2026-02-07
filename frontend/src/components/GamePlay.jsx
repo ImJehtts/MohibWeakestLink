@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 export const GamePlay = ({ players, addtoBank, handleSetPlayersLeft }) => {
     const moneyAmounts = [1000, 800, 600, 450, 300, 200, 100, 50, 20];
     
-    // State to track the current money amount and the accumulated Bank value
+    // State to track the current money amount, the accumulated Bank value, and the total score
     const [currentAmount, setCurrentAmount] = useState(moneyAmounts[8]); 
     const [bankValue, setBankValue] = useState(0);
+    const [total, setTotal] = useState(0); 
 
-    const [timer, setTimer] = useState(10); 
+    const [timer, setTimer] = useState(20); 
     const [isRoundActive, setIsRoundActive] = useState(false);
 
     const questionMap = {
@@ -18,22 +19,28 @@ export const GamePlay = ({ players, addtoBank, handleSetPlayersLeft }) => {
 
     const [showAnswer, setShowAnswer] = useState(false);
     
-
     // Function to handle button presses
     const handleButtonPress = (buttonType) => {
         if (buttonType === 'Correct') {
             // Move to the next money amount if "Correct"
             const currentIndex = moneyAmounts.indexOf(currentAmount);
-            if (currentIndex > 0) {
-                setCurrentAmount(moneyAmounts[currentIndex - 1]);
+            if (currentIndex === 0) {
+                setTotal(prevTotal => prevTotal === 800 ? 1000 : prevTotal + 1000);
+            } 
+            else {
+                setTotal(currentAmount);
+                const nextAmount = moneyAmounts[currentIndex - 1];
+                setCurrentAmount(nextAmount);
             }
         } else if (buttonType === 'Bank') {
             // Add current value to Bank, reset to $20
-            setBankValue(bankValue + currentAmount);
+            setBankValue(prevBank => prevBank + total);
             setCurrentAmount(moneyAmounts[8]); 
+            setTotal(0); // Reset total when banking
         } else {
-            // If "Wrong" is selected, reset to $20
+            // If "Wrong" is selected, reset to $20 and reset total
             setCurrentAmount(moneyAmounts[8]); 
+            setTotal(0);
         }
     };
 
