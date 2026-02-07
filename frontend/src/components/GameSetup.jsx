@@ -33,6 +33,7 @@ export const GameSetup = ({ setPlayers }) => {
                 </div>
                 <button type="submit">Submit</button>
             </form>
+            <h2>*Please Number Your Players Accordingly*</h2>
         </div>
     </div>
 );
