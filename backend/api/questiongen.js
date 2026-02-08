@@ -5,7 +5,10 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
 
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -21,9 +24,10 @@ export default async function handler(req, res) {
         },
         {
           role: "user",
-          content: `Generate 10 random trivia questions. 
-          Return a single JSON object where the keys are the questions and the values are the answers. 
-          Example format: {"What is the capital of France?": "Paris", "What is 2+2?": "4"}`
+          content: `Generate 84 random trivia questions. 
+          Return a single JSON object where the keys are the questions and the values are the answers.
+          The questions should be difficult and cover a wide range of topics as this is for a game called "The Weakest Link" with money prizes.
+          Example format: {"When did WW2 End?": "1945", "who invented the telephone": "Alexander Graham Bell"}`
         }
       ],
       response_format: { type: "json_object" }, 
