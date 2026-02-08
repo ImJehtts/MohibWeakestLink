@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export const GameSetup = ({ setPlayers }) => {
   const [numPlayers, setNumPlayers] = useState(2);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const incrementPlayers = () => setNumPlayers(prev => prev + 1);
 
@@ -11,6 +12,7 @@ export const GameSetup = ({ setPlayers }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
     setPlayers(numPlayers); 
   };
 
@@ -22,14 +24,14 @@ export const GameSetup = ({ setPlayers }) => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <h2 className="players">Number of Players: </h2>
-                    <button type="button" onClick={decrementPlayers} disabled={numPlayers <= 2}>↓</button>
+                    <button type="button" onClick={decrementPlayers} disabled={isSubmitted || numPlayers <= 2}>↓</button>
                     <input 
                         id="players" 
                         type="number" 
                         value={numPlayers} 
                         readOnly
                     />
-                    <button type="button" onClick={incrementPlayers} disabled={numPlayers >= 8}>↑</button>
+                    <button type="button" onClick={incrementPlayers} disabled={isSubmitted || numPlayers >= 8}>↑</button>
                 </div>
                 <button type="submit">Submit</button>
             </form>
