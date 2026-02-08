@@ -18,7 +18,6 @@ function MainPages() {
   const handleSetPlayers = (num) => {
     setPlayers(num);
     setRound(1);
-    console.log("Players set to: ", num);
   };
 
    const handleSetPlayersLeft = () => {
