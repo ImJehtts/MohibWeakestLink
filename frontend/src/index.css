@@ -1,37 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:wght@300;400;500;600&display=swap');
 
 * {
-  box-sizing: 0;
   padding: 0;
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
 }
 
 :root {
+    /* Theme Colours */
     --color-bg: #03045E; 
     --color-dblue: #023E8A;
     --color-lblue: #0096C7;
     --color-sblue: #48CAE4;
     --color-slblue: #ADE8F4; 
     --color-white: #FFFFFF;
+
+    /* Game Colours */
+  --color-red: #E63946;
+  --color-yellow: #F4D35E;
+  --color-green: #2A9D8F;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 90vh;
+    overflow: hidden;
     background: var(--color-bg);
     margin: 0;
 }
 
 .GameSetupContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 3rem;  
-    flex-direction: column;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem; 
 }
 
 .GameSetupContainer h3{
@@ -43,7 +48,7 @@ body {
 .GameSetup {
     background: var(--color-white);
     border-radius: 1.5rem; 
-    width: 100%;
+    width: 80%;
     max-width: 700px;  
     padding: 4rem;  
     display: flex;
@@ -68,9 +73,9 @@ button {
     background-color: var(--color-lblue);
     border: none;
     color: var(--color-white);
-    padding: 1.5rem 2rem; 
-    font-size: 1.75rem; 
-    border-radius: 6px; 
+    padding: 2vmin 4vmin;   
+    font-size: 2.5vmin;     
+    border-radius: 1vmin;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -100,4 +105,178 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 2rem;  
+}
+
+.GamePlayContainer {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column; 
+  padding: 2vh; 
+  box-sizing: border-box;
+  }
+  
+  .GameTimer {
+    text-align: center;
+    font-size: 6vmin; 
+    margin: 0;
+    flex-shrink: 0;
+    color: var(--color-white);
+  }
+  
+  .GamePlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+    flex-grow: 1;
+  }
+  
+  .MoneyColumn {
+    justify-content: center;
+    height: 100%;
+    gap: 1vh;
+  }
+  
+  .MoneyLadder {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+  }
+  
+  .MoneyBubble {
+    background: white;
+    border-radius: 50%;
+    width: 14vmin;  
+    height: 7vmin;
+    font-size: 3vmin;
+    margin-bottom: 0.5vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .MoneyBubble.active {
+    color: var(--color-white);
+    border-color: var(--color-green);
+    background: var(--color-green);
+    font-weight: bold;
+  }
+  
+  .BankAmount {
+    color: var(--color-white);
+    font-size: 4vmin;
+  }
+  
+  .QuestionCard {
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center;
+    width: 60vw;
+    max-width: 800px;
+    height: auto;
+    min-height: 40vh;
+    margin-top: 0;
+    padding: 5vmin;
+    gap: 3vh;             
+    margin: 0;
+    border-radius: 2vmin;
+  }
+  
+  
+  .QuestionText {
+    color: var(--color-dblue);
+    text-align: center;
+    font-size: 5vmin;      
+    margin-bottom: 1vh;
+    
+  }
+  
+  .AnswerButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+    width: 100%;
+  }
+  
+  .AnswerButtons .Wrong {
+    background-color: var(--color-red);
+  }
+  
+  .AnswerButtons .Bank {
+    background-color: var(--color-yellow);
+  }
+  
+  .AnswerButtons .Correct {
+    background-color: var(--color-green);
+  }
+  
+  .VotingButton {
+    margin-top: 1vh;
+    font-size: 2.5vmin;
+    padding: 2vmin 5vmin;
+  }
+
+  .VotingContainer {
+    height: 90vh; 
+    width: 90vw;           
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;     
+    padding: 2vh;
+    margin-top: 0;          
+    box-sizing: border-box;
+    overflow: hidden;        
+  }
+
+  .VotingRound {
+    background: var(--color-white);
+    border-radius: 1.5rem; 
+    width: 90%;
+    max-width: 600px;
+    padding: 4vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     
+    text-align: center;     
+    gap: 1.5vh;              
+}
+
+.VotingRound h1{
+    font-size: 4vmin; 
+    color: var(--color-dblue);
+    margin-bottom: 1vh;
+    font-weight: bold;
+}
+
+.VotingRound h2{
+    font-size: 2.5vmin; 
+    color: var(--color-dblue);
+    margin-bottom: 2.5vmin;
+    margin: 0;
+    font-weight: semi-bold;
+}
+
+.WinnerContainer{    
+    display: flex;
+    flex-direction: column;  
+    align-items: center;     
+}
+
+.WinnerContainer h1{
+    font-size: 5vmin; 
+    color: var(--color-white);
+    margin-bottom: 2vh;
+    font-weight: bold;
+}
+
+.WinnerContainer h2{
+    font-size: 3vmin; 
+    color: var(--color-white);
+    margin-bottom: 0;
+    font-weight: semi-bold;
 }
