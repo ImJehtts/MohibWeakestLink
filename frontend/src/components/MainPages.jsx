@@ -47,7 +47,7 @@ function MainPages() {
   }
 
   const handleVotingDone = () => {
-    if (players > 2) {
+    if (players > 1) {
       setRound(1);
   }
     else {
