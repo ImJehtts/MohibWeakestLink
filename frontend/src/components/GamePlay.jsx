@@ -72,7 +72,9 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, 
             return () => clearInterval(timerInterval);
         } else {
             // When timer hits 0, disable other buttons
-            setIsRoundActive(true); 
+            setTimeout(() => {
+                setIsRoundActive(true); 
+            }, 2000);
         }
     }, [timer, questionsAnswered, questionLimit]);
 
