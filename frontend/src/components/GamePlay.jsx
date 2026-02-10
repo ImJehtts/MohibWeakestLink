@@ -8,7 +8,7 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, 
     const [bankValue, setBankValue] = useState(0);
     const [total, setTotal] = useState(0); 
 
-    const [timer, setTimer] = useState(players > 5 ? 90 : 60); 
+    const [timer, setTimer] = useState(60); 
     const [isRoundActive, setIsRoundActive] = useState(false);
 
     const [isProcessing, setIsProcessing] = useState(false);
