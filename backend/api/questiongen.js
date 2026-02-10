@@ -17,22 +17,25 @@ export default async function handler(req, res) {
   const promptOptions = [
     `Generate 84 highly specific trivia questions. 
     Output: A single JSON object { "Question": "Answer" }.
-    Categories: Exactly 12 questions for Sports, History/Geography, Science, Media, Pop Culture, and Other (True Crime/Food/Tech).
     Difficulty: For each category, provide 2 easy, 4 medium, 3 hard, and 3 very hard questions.
+    Categories: Exactly 12 questions for Sports, History/Geography, Science, Media, Pop Culture, and Other (True Crime/Food/Tech).
+    Then 4 medium, 4 hard, 4 very hard questions for random cateorgies for a total of 84 questions.
     Ordering: Mix easy and medium questions together for the first 36 questions. Mix hard and very hard for the remaining 48. Ensure categories are randomized so no two questions of the same category appear back-to-back.
     Style: "The Weakest Link" style—concise but challenging. Avoid common "top-tier" facts. Focus on international milestones, scientific nomenclature, and niche historical records to ensure variety if prompted repeatedly.`,
   
     `Generate 84 unique trivia questions for a high-stakes game.
     Output: Valid JSON object only. Format: {"Question": "Answer"}.
-    Distribution: 12 questions per category Science, History/Geography, Sports, Pop Culture, Media, and Other (True Crime/Food/Tech). 
     Complexity Mix: Per category: 2 easy, 4 medium, 3 hard, 3 very hard.
+    Distribution: 12 questions per category Science, History/Geography, Sports, Pop Culture, Media, and Other (True Crime/Food/Tech). 
+    Then 4 medium, 4 hard, 4 very hard questions for random cateorgies for a total of 84 questions.
     Sequence: You MUST return all easy/medium questions first (shuffled), followed by all hard/very hard questions (shuffled). Do not group them by category.
     Use obscure facts that aren't typically found in standard trivia sets. The questions must be difficult enough for a money-prize competition.`,
   
     `Generate 84 random trivia questions for "The Weakest Link."
     Output: Valid JSON object only. Format: {"Question": "Answer"}.
-    Categorization: Provide 12 questions each for: Sports (obscure records), History/Geography (niche geopolitics), Science (Chemistry/Biology/Physics), Media (Classic Cinema/Indie Music), Pop Culture (Fashion/Trends), and Other (True Crime/Gastronomy/Tech).
     Hierarchy: Strictly follow the 2-easy, 4-medium, 3-hard, 3-very hard split per category.
+    Categorization: Provide 12 questions each for: Sports (obscure records), History/Geography (niche geopolitics), Science (Chemistry/Biology/Physics), Media (Classic Cinema/Indie Music), Pop Culture (Fashion/Trends), and Other (True Crime/Gastronomy/Tech).
+    Then 4 medium, 4 hard, 4 very hard questions for random cateorgies for a total of 84 questions.
     Sorting: Shuffle the easy/medium questions together as the first half of the response. Shuffle hard/very hard together for the second half.
     Strict Instruction: Do not repeat common trivia tropes. If a question is commonly known, discard it and find a deeper fact. Ensure the phrasing is professional and the answers are 100% factually verifiable.`
   ];
