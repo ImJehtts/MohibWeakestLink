@@ -70,15 +70,8 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, 
 
             // Clear the interval when the timer reaches 0
             return () => clearInterval(timerInterval);
-        } else if (questionsAnswered >= questionLimit) {
-            // When timer hits 0, disable other buttons
-            setTimeout(() => {
-                setBankValue(prevBank => prevBank + total);
-                setCurrentAmount(moneyAmounts[8]); 
-                setTotal(0);
-                setIsRoundActive(true); 
-            }, 2000);
         } else {
+            // When timer hits 0, disable other buttons
             setTimeout(() => {
                 setIsRoundActive(true); 
                 moveToNextQuestion();
