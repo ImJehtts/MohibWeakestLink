@@ -46,8 +46,24 @@ function MainPages() {
       setRound(2);
   }
 
-  const handleVotingDone = () => {
+  const handleVotingDone = async () => {
     if (players > 1) {
+      try {
+        const res = await fetch(
+          "https://mohibsweakestlink.vercel.app/api/questiongen"
+        );
+    
+        if (!res.ok) {
+          throw new Error("Failed to fetch trivia");
+        }
+    
+        const responsetriviaData = await res.json();
+        setTriviaData(responsetriviaData);
+        setQuestionLimit(Math.floor(84 / num));
+  
+      } catch (err) {
+        console.error("Error fetching trivia:", err);
+      }
       setRound(1);
   }
     else {

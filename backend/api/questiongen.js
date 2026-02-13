@@ -15,19 +15,18 @@ export default async function handler(req, res) {
   }
 
   const promptOptions = [
-    `Create a JSON object {"Q": "A"} containing 72 unique trivia items.
-    The Split: The first 36 must be Easy/Medium difficulty; the final 36 must be Hard/Expert level.
-    The Mix: Alternate between Sports, Science, History, Media, Pop Culture, Tech, and General Trivia. Ensure no category repeats in succession.
-    The Tone: Use "The Weakest Link" style—brief, professional, and focusing on global records or scientific terms.`,
+    `Generate JSON object of 16 unique trivia questions: {"q": "Question", "a": "Answer"}.
+    Categories: Randomly pull from Sports, Science, History, Media, Pop Culture, and Tech.
+    Difficulty: Completely randomize the difficulty for each question (Easy, Medium, Hard, or Very Hard).
+    Style: "The Weakest Link" style—concise, professional, and factually dense. No back-to-back duplicate categories.`,
   
-    `Generate 72 "The Weakest Link" style trivia questions.
-    Format: Valid JSON {"Question": "Answer"}.
-    Order: 1-36 are standard difficulty; 37-72 are high-difficulty/obscure facts.
-    Diversity: Randomize categories (Science, History, Sports, Pop Culture, Media, Tech) so the same subject never appears twice in a row.`,
+    `Provide 16 trivia questions in a valid JSON object: {"q": "Question", "a": "Answer"}.
+    Mix: Randomly distribute categories (Science, History, Sports, Media, Tech, Pop Culture) and difficulties (ranging from Easy to Very Hard).
+    Rule: Avoid common "trivia tropes. Ensure no two questions of the same category are consecutive.`,
   
-    `Provide 72 distinct trivia questions formatted as a single JSON map: {"Question": "Answer"}.
-    Complexity: Deliver 36 moderate questions followed by 36 very challenging questions.
-    Categories: Cycle through Science, History, Sports, Media, Tech, and Pop Culture without back-to-back duplicates.`
+    `Create 15 diverse trivia questions as a JSON object: {"q": "Question", "a": "Answer"}.
+    Instructions: Shuffle categories (Sports, Science, History, Media, Pop Culture, Tech) and difficulties (Easy through Very Hard) randomly.
+    Content: Keep phrasing brief and challenging.`
   ];
 
   const randomPrompt = promptOptions[Math.floor(Math.random() * promptOptions.length)];
