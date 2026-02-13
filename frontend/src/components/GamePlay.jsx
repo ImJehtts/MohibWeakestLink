@@ -92,7 +92,7 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData }
             setTimer(0);
             setIsRoundActive(true);
         }
-    }, [localTrivia, isRoundActive]);
+    }, [localTrivia, isRoundActive, questionsAnswered]);
 
     // Handle Voting Round button click
     const handleVotingRound = () => {
