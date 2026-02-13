@@ -61,30 +61,34 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData }
         }, 1000);
     };
 
+    useEffect(() => {
+        if (questionsAnswered >= 16 && !isRoundActive) {
+            setBankValue(prev => prev + total); // Bank the pending chain amount
+            setTotal(0);
+            setTimer(0);
+            setIsRoundActive(true);
+        }
+    }, [questionsAnswered, total, isRoundActive]);
+
     // Timer effect to countdown every second
     useEffect(() => {
-        if (timer > 0 && questionsAnswered < 16) {
+        if (timer > 0 && !isRoundActive) {
             const timerInterval = setInterval(() => {
                 setTimer(prevTimer => prevTimer - 1);
             }, 1000);
 
             // Clear the interval when the timer reaches 0
             return () => clearInterval(timerInterval);
-        } else if (questionsAnswered >= 16) {
-            setBankValue(prevBank => prevBank + total);
-            setCurrentAmount(moneyAmounts[8]); 
-            setTotal(0);
-        }
-        else {
+        } else {
             // When timer hits 0, disable other buttons
             setTimeout(() => {
                 setIsRoundActive(true); 
             }, 2000);
         }
-    }, [timer, questionsAnswered]);
+    }, [timer, isRoundActive]);
 
     useEffect(() => {
-        if (Object.keys(localTrivia).length === 0 && !isRoundActive) {
+        if (Object.keys(localTrivia).length === 0 && !isRoundActive && questionsAnswered < 16) {
             setTimer(0);
             setIsRoundActive(true);
         }

@@ -19,6 +19,11 @@ export const MidRound = ({players, bank, handleVotingDone}) => {
         }
       }, [timer]);
 
+    const handleNextRoundClick = async () => {
+      setIsSubmitted(true); 
+      await handleVotingDone(); 
+    };
+
     return (
     <div className="VotingContainer">
         <div className="GameTimer">
@@ -29,11 +34,8 @@ export const MidRound = ({players, bank, handleVotingDone}) => {
             <h2>Players Left After Voting: {players}</h2>
             <h2>Total value in bank: {bank}</h2>
             <button 
-              onClick={() => {
-                handleVotingDone();
-                setIsSubmitted(true);
-              }}
-            disabled={timer > 0 && !isVotingOver}
+              onClick={handleNextRoundClick}
+            disabled={(timer > 0 && !isVotingOver) || isSubmitted}
             >
             {isSubmitted ? 'Loading' : 'Next Round'}
           </button>
