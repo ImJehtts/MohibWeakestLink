@@ -4,6 +4,7 @@ export const MidRound = ({players, bank, handleVotingDone}) => {
 
     const [timer, setTimer] = useState(10); 
     const [isVotingOver, setIsVotingOver] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     useEffect(() => {
         if (timer > 0) {
@@ -28,9 +29,14 @@ export const MidRound = ({players, bank, handleVotingDone}) => {
             <h2>Players Left After Voting: {players}</h2>
             <h2>Total value in bank: {bank}</h2>
             <button 
-            onClick={handleVotingDone}
+              onClick={() => {
+                handleVotingDone();
+                setIsSubmitted(true);
+              }}
             disabled={timer > 0 && !isVotingOver}
-            >Next Round</button>
+            >
+            {isSubmitted ? 'Loading' : 'Next Round'}
+          </button>
             <h2 style={{marginTop: '3rem'}}>*Players re-number your players accordingly*</h2>
         </div>
     </div>
