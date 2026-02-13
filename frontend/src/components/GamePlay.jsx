@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, questionLimit }) => {
+export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData }) => {
     const moneyAmounts = [1000, 800, 600, 450, 300, 200, 100, 50, 20];
     
     // State to track the current money amount, the accumulated Bank value, and the total score
@@ -63,7 +63,7 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, 
 
     // Timer effect to countdown every second
     useEffect(() => {
-        if (timer > 0 && questionsAnswered < questionLimit) {
+        if (timer > 0 && questionsAnswered < 16) {
             const timerInterval = setInterval(() => {
                 setTimer(prevTimer => prevTimer - 1);
             }, 1000);
@@ -76,7 +76,7 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, 
                 setIsRoundActive(true); 
             }, 2000);
         }
-    }, [timer, questionsAnswered, questionLimit]);
+    }, [timer, questionsAnswered]);
 
     useEffect(() => {
         if (Object.keys(localTrivia).length === 0 && !isRoundActive) {
@@ -92,7 +92,7 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, 
     };
 
     const getDisplayText = () => {
-        if (questionsAnswered >= questionLimit) return "Finished questions for this round";
+        if (questionsAnswered >= 16) return "Finished questions for this round";
         if (!currentQuestion) return "No more questions available!";
         return showAnswer ? localTrivia[currentQuestion] : currentQuestion;
     };
@@ -115,7 +115,7 @@ export const GamePlay = ({players, addtoBank, handleSetPlayersLeft, triviaData, 
                 <div className="QuestionCard">
                     <h1 className="QuestionText">{getDisplayText()}</h1>
 
-                    {questionsAnswered < questionLimit && currentQuestion && (
+                    {questionsAnswered < 16 && currentQuestion && (
                         <>
                             <button onClick={() => setShowAnswer(!showAnswer)}>
                                 {showAnswer ? "Hide Answer" : "Show Answer"}
